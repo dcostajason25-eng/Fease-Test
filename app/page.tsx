@@ -133,12 +133,12 @@ export default function Home() {
     }
   };
 
-  const handleExportExcel = () => {
+  const handleExportExcel = async () => {
     if (!selectedStudy) {
       alert("Please save the study first");
       return;
     }
-    exportToExcel(selectedStudy);
+    try { await exportToExcel(selectedStudy); } catch (error) { alert("Failed to export Excel file"); console.error(error); }
   };
 
   const handleExportPDF = () => {
